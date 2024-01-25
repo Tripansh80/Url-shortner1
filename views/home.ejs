@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="font-family: Verdana, Geneva, Tahoma, sans-serif;">
+<form action="/url" method="post">
+    <h1>URL Shortner</h1>
+
+   <% if (locals.id) { %>
+    <p>URL Genereated: http:localhost:8001/url/<%= id %></p>
+   <% } %>
+     
+    <div><label>Enter the value</label>
+        <input type="text" placeholder="Enter the text" name="url">
+        <button id="name" type="submit">Generate</button></div>
+
+
+
+</form>
+
+<div>
+<div >
+    <% if (locals.urls) { %>
+        <table>
+            <thead>
+                <th>S.no</th>
+                <th>ShortID</th>
+                <th>Redirect</th>
+                <th>Clicks</th>
+            </thead>
+            <tbody>
+                <% urls.forEach((url, index) => { %>
+                    <tr> <!-- Add this line to start a new row -->
+                        <td><%= index + 1 %></td> <!-- Assuming you want to display the index as the serial number -->
+                        <td><%= url.shortId %></td>
+                        <td><%= url.redirecturl %></td>
+                        <td><%= url.visithistory.length %></td>
+                    </tr> <!-- Add this line to close the row -->
+                <% }) %>
+            </tbody>
+        </table>
+    <% } %>
+</div>
+
+</div>
+</body>
+</html>
